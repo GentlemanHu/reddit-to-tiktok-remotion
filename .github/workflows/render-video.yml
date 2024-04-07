@@ -4,11 +4,11 @@ on:
     inputs:
       titleText:
         description: "Which text should it say?"
-        required: true
+        required: false
         default: "Welcome to Remotion"
       titleColor:
         description: "Which color should it be in?"
-        required: true
+        required: false
         default: "black"
 jobs:
   render:
@@ -19,11 +19,11 @@ jobs:
       - uses: actions/setup-node@main
       - run: sudo apt update
       - run: sudo apt install ffmpeg
-      - run: npm i
-      - run: echo $WORKFLOW_INPUT > input-props.json
-        env:
-          WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
-      - run: npm run build -- --props="./input-props.json"
+      # - run: npm i
+      # - run: echo $WORKFLOW_INPUT > input-props.json
+      #   env:
+      #     WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
+      - run: pnpm build
       - uses: actions/upload-artifact@v2
         with:
           name: out.mp4
