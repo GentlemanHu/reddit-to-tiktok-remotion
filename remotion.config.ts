@@ -7,4 +7,4 @@ import { Config } from 'remotion';
 Config.Rendering.setImageFormat('jpeg');
 Config.Rendering.setQuality(75);
 Config.Output.setOverwriteOutput(true);
-Config.Rendering.setConcurrency(6);
+Config.Rendering.setConcurrency(4);
